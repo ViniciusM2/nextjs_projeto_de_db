@@ -1,0 +1,1575 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "FastAPI", "version": "0.1.0" },
+  "paths": {
+    "/token": {
+      "post": {
+        "summary": "Login Para Token",
+        "operationId": "login_para_token_token_post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_login_para_token_token_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pacientes/": {
+      "post": {
+        "summary": "Criar Paciente",
+        "operationId": "criar_paciente_pacientes__post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PacienteCreate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Paciente" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar Pacientes",
+        "operationId": "listar_pacientes_pacientes__get",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0, "title": "Skip" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 100, "title": "Limit" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Paciente" },
+                  "title": "Response Listar Pacientes Pacientes  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pacientes/{id_paciente}": {
+      "get": {
+        "summary": "Ler Paciente",
+        "operationId": "ler_paciente_pacientes__id_paciente__get",
+        "parameters": [
+          {
+            "name": "id_paciente",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Paciente" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Paciente" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar Paciente",
+        "operationId": "atualizar_paciente_pacientes__id_paciente__put",
+        "parameters": [
+          {
+            "name": "id_paciente",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Paciente" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PacienteBase" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Paciente" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar Paciente",
+        "operationId": "deletar_paciente_pacientes__id_paciente__delete",
+        "parameters": [
+          {
+            "name": "id_paciente",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Paciente" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Paciente" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medicos/": {
+      "post": {
+        "summary": "Criar Medico",
+        "operationId": "criar_medico_medicos__post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MedicoCreate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Medico" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar Medicos",
+        "operationId": "listar_medicos_medicos__get",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0, "title": "Skip" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 100, "title": "Limit" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Medico" },
+                  "title": "Response Listar Medicos Medicos  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medicos/{id_medico}": {
+      "get": {
+        "summary": "Ler Medico",
+        "operationId": "ler_medico_medicos__id_medico__get",
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Medico" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar Medico",
+        "operationId": "atualizar_medico_medicos__id_medico__put",
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MedicoBase" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Medico" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar Medico",
+        "operationId": "deletar_medico_medicos__id_medico__delete",
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Medico" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/": {
+      "post": {
+        "summary": "Criar Consulta",
+        "operationId": "criar_consulta_consultas__post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ConsultaCreate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar Consultas",
+        "operationId": "listar_consultas_consultas__get",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0, "title": "Skip" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 100, "title": "Limit" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Consulta" },
+                  "title": "Response Listar Consultas Consultas  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id_consulta}": {
+      "get": {
+        "summary": "Ler Consulta",
+        "operationId": "ler_consulta_consultas__id_consulta__get",
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar Consulta",
+        "operationId": "atualizar_consulta_consultas__id_consulta__put",
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ConsultaBase" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar Consulta",
+        "operationId": "deletar_consulta_consultas__id_consulta__delete",
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/horarios/": {
+      "post": {
+        "summary": "Criar Horario Disponivel",
+        "operationId": "criar_horario_disponivel_horarios__post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HorarioDisponivelCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HorarioDisponivel" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar Horarios Disponiveis",
+        "operationId": "listar_horarios_disponiveis_horarios__get",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0, "title": "Skip" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 100, "title": "Limit" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/HorarioDisponivel" },
+                  "title": "Response Listar Horarios Disponiveis Horarios  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/horarios/{id_horario}": {
+      "get": {
+        "summary": "Ler Horario Disponivel",
+        "operationId": "ler_horario_disponivel_horarios__id_horario__get",
+        "parameters": [
+          {
+            "name": "id_horario",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Horario" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HorarioDisponivel" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar Horario Disponivel",
+        "operationId": "atualizar_horario_disponivel_horarios__id_horario__put",
+        "parameters": [
+          {
+            "name": "id_horario",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Horario" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/HorarioDisponivelBase" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HorarioDisponivel" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar Horario Disponivel",
+        "operationId": "deletar_horario_disponivel_horarios__id_horario__delete",
+        "parameters": [
+          {
+            "name": "id_horario",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Horario" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HorarioDisponivel" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admins/": {
+      "post": {
+        "summary": "Criar Admin",
+        "operationId": "criar_admin_admins__post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AdminCreate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Admin" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar Admins",
+        "operationId": "listar_admins_admins__get",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 0, "title": "Skip" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 100, "title": "Limit" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Admin" },
+                  "title": "Response Listar Admins Admins  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admins/{id_admin}": {
+      "get": {
+        "summary": "Ler Admin",
+        "operationId": "ler_admin_admins__id_admin__get",
+        "parameters": [
+          {
+            "name": "id_admin",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Admin" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Admin" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar Admin",
+        "operationId": "atualizar_admin_admins__id_admin__put",
+        "parameters": [
+          {
+            "name": "id_admin",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Admin" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AdminBase" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Admin" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar Admin",
+        "operationId": "deletar_admin_admins__id_admin__delete",
+        "parameters": [
+          {
+            "name": "id_admin",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Admin" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Admin" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medicos/{id_medico}/horarios_disponiveis": {
+      "get": {
+        "summary": "Listar Horarios Disponiveis Medico",
+        "operationId": "listar_horarios_disponiveis_medico_medicos__id_medico__horarios_disponiveis_get",
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/HorarioDisponivel" },
+                  "title": "Response Listar Horarios Disponiveis Medico Medicos  Id Medico  Horarios Disponiveis Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id_medico}/agendar": {
+      "post": {
+        "summary": "Agendar Consulta",
+        "operationId": "agendar_consulta_consultas__id_medico__agendar_post",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ConsultaCreate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id_consulta}/cancelar": {
+      "put": {
+        "summary": "Cancelar Consulta",
+        "operationId": "cancelar_consulta_consultas__id_consulta__cancelar_put",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pacientes/{id_paciente}/consultas": {
+      "get": {
+        "summary": "Listar Consultas Paciente",
+        "operationId": "listar_consultas_paciente_pacientes__id_paciente__consultas_get",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_paciente",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Paciente" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Consulta" },
+                  "title": "Response Listar Consultas Paciente Pacientes  Id Paciente  Consultas Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medicos/{id_medico}/consultas": {
+      "get": {
+        "summary": "Listar Consultas Medico",
+        "operationId": "listar_consultas_medico_medicos__id_medico__consultas_get",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Consulta" },
+                  "title": "Response Listar Consultas Medico Medicos  Id Medico  Consultas Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id_consulta}/confirmar": {
+      "put": {
+        "summary": "Confirmar Consulta",
+        "operationId": "confirmar_consulta_consultas__id_consulta__confirmar_put",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id_consulta}/iniciar": {
+      "put": {
+        "summary": "Iniciar Consulta",
+        "operationId": "iniciar_consulta_consultas__id_consulta__iniciar_put",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id_consulta}/finalizar": {
+      "put": {
+        "summary": "Finalizar Consulta",
+        "operationId": "finalizar_consulta_consultas__id_consulta__finalizar_put",
+        "security": [{ "OAuth2PasswordBearer": [] }],
+        "parameters": [
+          {
+            "name": "id_consulta",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Consulta" }
+          },
+          {
+            "name": "observacoes",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Observacoes" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Consulta" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Admin": {
+        "properties": {
+          "nome_admin": { "type": "string", "title": "Nome Admin" },
+          "email_admin": { "type": "string", "title": "Email Admin" },
+          "id_admin": { "type": "integer", "title": "Id Admin" }
+        },
+        "type": "object",
+        "required": ["nome_admin", "email_admin", "id_admin"],
+        "title": "Admin"
+      },
+      "AdminBase": {
+        "properties": {
+          "nome_admin": { "type": "string", "title": "Nome Admin" },
+          "email_admin": { "type": "string", "title": "Email Admin" }
+        },
+        "type": "object",
+        "required": ["nome_admin", "email_admin"],
+        "title": "AdminBase"
+      },
+      "AdminCreate": {
+        "properties": {
+          "nome_admin": { "type": "string", "title": "Nome Admin" },
+          "email_admin": { "type": "string", "title": "Email Admin" },
+          "senha_admin": { "type": "string", "title": "Senha Admin" }
+        },
+        "type": "object",
+        "required": ["nome_admin", "email_admin", "senha_admin"],
+        "title": "AdminCreate"
+      },
+      "Body_login_para_token_token_post": {
+        "properties": {
+          "grant_type": {
+            "anyOf": [
+              { "type": "string", "pattern": "password" },
+              { "type": "null" }
+            ],
+            "title": "Grant Type"
+          },
+          "username": { "type": "string", "title": "Username" },
+          "password": { "type": "string", "title": "Password" },
+          "scope": { "type": "string", "title": "Scope", "default": "" },
+          "client_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Client Id"
+          },
+          "client_secret": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Client Secret"
+          }
+        },
+        "type": "object",
+        "required": ["username", "password"],
+        "title": "Body_login_para_token_token_post"
+      },
+      "Consulta": {
+        "properties": {
+          "id_paciente": { "type": "integer", "title": "Id Paciente" },
+          "id_medico": { "type": "integer", "title": "Id Medico" },
+          "data_consulta": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Consulta"
+          },
+          "horario_consulta": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Consulta"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "default": "agendada"
+          },
+          "observacoes": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Observacoes"
+          },
+          "id_consulta": { "type": "integer", "title": "Id Consulta" }
+        },
+        "type": "object",
+        "required": [
+          "id_paciente",
+          "id_medico",
+          "data_consulta",
+          "horario_consulta",
+          "id_consulta"
+        ],
+        "title": "Consulta"
+      },
+      "ConsultaBase": {
+        "properties": {
+          "id_paciente": { "type": "integer", "title": "Id Paciente" },
+          "id_medico": { "type": "integer", "title": "Id Medico" },
+          "data_consulta": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Consulta"
+          },
+          "horario_consulta": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Consulta"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "default": "agendada"
+          },
+          "observacoes": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Observacoes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_paciente",
+          "id_medico",
+          "data_consulta",
+          "horario_consulta"
+        ],
+        "title": "ConsultaBase"
+      },
+      "ConsultaCreate": {
+        "properties": {
+          "id_paciente": { "type": "integer", "title": "Id Paciente" },
+          "id_medico": { "type": "integer", "title": "Id Medico" },
+          "data_consulta": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Consulta"
+          },
+          "horario_consulta": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Consulta"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "default": "agendada"
+          },
+          "observacoes": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Observacoes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_paciente",
+          "id_medico",
+          "data_consulta",
+          "horario_consulta"
+        ],
+        "title": "ConsultaCreate"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HorarioDisponivel": {
+        "properties": {
+          "id_medico": { "type": "integer", "title": "Id Medico" },
+          "data_disponivel": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Disponivel"
+          },
+          "horario_inicial": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Inicial"
+          },
+          "horario_final": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Final"
+          },
+          "id_horario": { "type": "integer", "title": "Id Horario" }
+        },
+        "type": "object",
+        "required": [
+          "id_medico",
+          "data_disponivel",
+          "horario_inicial",
+          "horario_final",
+          "id_horario"
+        ],
+        "title": "HorarioDisponivel"
+      },
+      "HorarioDisponivelBase": {
+        "properties": {
+          "id_medico": { "type": "integer", "title": "Id Medico" },
+          "data_disponivel": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Disponivel"
+          },
+          "horario_inicial": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Inicial"
+          },
+          "horario_final": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Final"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_medico",
+          "data_disponivel",
+          "horario_inicial",
+          "horario_final"
+        ],
+        "title": "HorarioDisponivelBase"
+      },
+      "HorarioDisponivelCreate": {
+        "properties": {
+          "id_medico": { "type": "integer", "title": "Id Medico" },
+          "data_disponivel": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Disponivel"
+          },
+          "horario_inicial": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Inicial"
+          },
+          "horario_final": {
+            "type": "string",
+            "format": "time",
+            "title": "Horario Final"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_medico",
+          "data_disponivel",
+          "horario_inicial",
+          "horario_final"
+        ],
+        "title": "HorarioDisponivelCreate"
+      },
+      "Medico": {
+        "properties": {
+          "nome": { "type": "string", "title": "Nome" },
+          "email": { "type": "string", "title": "Email" },
+          "especialidade": { "type": "string", "title": "Especialidade" },
+          "telefone": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Telefone"
+          },
+          "crm": { "type": "string", "title": "Crm" },
+          "id_medico": { "type": "integer", "title": "Id Medico" }
+        },
+        "type": "object",
+        "required": ["nome", "email", "especialidade", "crm", "id_medico"],
+        "title": "Medico"
+      },
+      "MedicoBase": {
+        "properties": {
+          "nome": { "type": "string", "title": "Nome" },
+          "email": { "type": "string", "title": "Email" },
+          "especialidade": { "type": "string", "title": "Especialidade" },
+          "telefone": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Telefone"
+          },
+          "crm": { "type": "string", "title": "Crm" }
+        },
+        "type": "object",
+        "required": ["nome", "email", "especialidade", "crm"],
+        "title": "MedicoBase"
+      },
+      "MedicoCreate": {
+        "properties": {
+          "nome": { "type": "string", "title": "Nome" },
+          "email": { "type": "string", "title": "Email" },
+          "especialidade": { "type": "string", "title": "Especialidade" },
+          "telefone": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Telefone"
+          },
+          "crm": { "type": "string", "title": "Crm" },
+          "senha": { "type": "string", "title": "Senha" }
+        },
+        "type": "object",
+        "required": ["nome", "email", "especialidade", "crm", "senha"],
+        "title": "MedicoCreate"
+      },
+      "Paciente": {
+        "properties": {
+          "nome": { "type": "string", "title": "Nome" },
+          "email": { "type": "string", "title": "Email" },
+          "telefone": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Telefone"
+          },
+          "data_de_nascimento": {
+            "type": "string",
+            "format": "date",
+            "title": "Data De Nascimento"
+          },
+          "cpf": { "type": "string", "title": "Cpf" },
+          "id_paciente": { "type": "integer", "title": "Id Paciente" }
+        },
+        "type": "object",
+        "required": [
+          "nome",
+          "email",
+          "data_de_nascimento",
+          "cpf",
+          "id_paciente"
+        ],
+        "title": "Paciente"
+      },
+      "PacienteBase": {
+        "properties": {
+          "nome": { "type": "string", "title": "Nome" },
+          "email": { "type": "string", "title": "Email" },
+          "telefone": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Telefone"
+          },
+          "data_de_nascimento": {
+            "type": "string",
+            "format": "date",
+            "title": "Data De Nascimento"
+          },
+          "cpf": { "type": "string", "title": "Cpf" }
+        },
+        "type": "object",
+        "required": ["nome", "email", "data_de_nascimento", "cpf"],
+        "title": "PacienteBase"
+      },
+      "PacienteCreate": {
+        "properties": {
+          "nome": { "type": "string", "title": "Nome" },
+          "email": { "type": "string", "title": "Email" },
+          "telefone": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Telefone"
+          },
+          "data_de_nascimento": {
+            "type": "string",
+            "format": "date",
+            "title": "Data De Nascimento"
+          },
+          "cpf": { "type": "string", "title": "Cpf" },
+          "senha": { "type": "string", "title": "Senha" }
+        },
+        "type": "object",
+        "required": ["nome", "email", "data_de_nascimento", "cpf", "senha"],
+        "title": "PacienteCreate"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "OAuth2PasswordBearer": {
+        "type": "oauth2",
+        "flows": { "password": { "scopes": {}, "tokenUrl": "token" } }
+      }
+    }
+  }
+}
