@@ -28,7 +28,12 @@ export default function DoctorAppointments({ medicoId, onClose }: DoctorAppointm
   const fetchConsultas = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`http://147.182.166.181/medicos/${medicoId}/consultas`)
+      const token = localStorage.getItem('token')
+      const response = await fetch(`http://147.182.166.181/medicos/${medicoId}/consultas`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      } )
       if (!response.ok) {
         throw new Error('Falha ao buscar consultas')
       }
