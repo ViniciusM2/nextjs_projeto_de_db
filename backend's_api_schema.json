@@ -36,6 +36,7 @@
       "post": {
         "summary": "Criar Paciente",
         "operationId": "criar_paciente_pacientes__post",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -66,6 +67,7 @@
       "get": {
         "summary": "Listar Pacientes",
         "operationId": "listar_pacientes_pacientes__get",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "skip",
@@ -108,6 +110,9 @@
       "get": {
         "summary": "Ler Paciente",
         "operationId": "ler_paciente_pacientes__id_paciente__get",
+        "security": [
+          { "OAuth2PasswordBearer": ["Paciente", "Medico", "Admin"] }
+        ],
         "parameters": [
           {
             "name": "id_paciente",
@@ -138,6 +143,7 @@
       "put": {
         "summary": "Atualizar Paciente",
         "operationId": "atualizar_paciente_pacientes__id_paciente__put",
+        "security": [{ "OAuth2PasswordBearer": ["Paciente", "Admin"] }],
         "parameters": [
           {
             "name": "id_paciente",
@@ -176,6 +182,7 @@
       "delete": {
         "summary": "Deletar Paciente",
         "operationId": "deletar_paciente_pacientes__id_paciente__delete",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_paciente",
@@ -208,6 +215,7 @@
       "post": {
         "summary": "Criar Medico",
         "operationId": "criar_medico_medicos__post",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -238,6 +246,7 @@
       "get": {
         "summary": "Listar Medicos",
         "operationId": "listar_medicos_medicos__get",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "skip",
@@ -280,6 +289,7 @@
       "get": {
         "summary": "Ler Medico",
         "operationId": "ler_medico_medicos__id_medico__get",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_medico",
@@ -310,6 +320,7 @@
       "put": {
         "summary": "Atualizar Medico",
         "operationId": "atualizar_medico_medicos__id_medico__put",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_medico",
@@ -348,6 +359,7 @@
       "delete": {
         "summary": "Deletar Medico",
         "operationId": "deletar_medico_medicos__id_medico__delete",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_medico",
@@ -380,6 +392,9 @@
       "post": {
         "summary": "Criar Consulta",
         "operationId": "criar_consulta_consultas__post",
+        "security": [
+          { "OAuth2PasswordBearer": ["Paciente", "Medico", "Admin"] }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -410,6 +425,9 @@
       "get": {
         "summary": "Listar Consultas",
         "operationId": "listar_consultas_consultas__get",
+        "security": [
+          { "OAuth2PasswordBearer": ["Paciente", "Medico", "Admin"] }
+        ],
         "parameters": [
           {
             "name": "skip",
@@ -452,6 +470,9 @@
       "get": {
         "summary": "Ler Consulta",
         "operationId": "ler_consulta_consultas__id_consulta__get",
+        "security": [
+          { "OAuth2PasswordBearer": ["Paciente", "Medico", "Admin"] }
+        ],
         "parameters": [
           {
             "name": "id_consulta",
@@ -482,6 +503,7 @@
       "put": {
         "summary": "Atualizar Consulta",
         "operationId": "atualizar_consulta_consultas__id_consulta__put",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_consulta",
@@ -520,6 +542,7 @@
       "delete": {
         "summary": "Deletar Consulta",
         "operationId": "deletar_consulta_consultas__id_consulta__delete",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_consulta",
@@ -552,6 +575,7 @@
       "post": {
         "summary": "Criar Horario Disponivel",
         "operationId": "criar_horario_disponivel_horarios__post",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -584,6 +608,7 @@
       "get": {
         "summary": "Listar Horarios Disponiveis",
         "operationId": "listar_horarios_disponiveis_horarios__get",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "skip",
@@ -626,6 +651,7 @@
       "get": {
         "summary": "Ler Horario Disponivel",
         "operationId": "ler_horario_disponivel_horarios__id_horario__get",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_horario",
@@ -656,6 +682,7 @@
       "put": {
         "summary": "Atualizar Horario Disponivel",
         "operationId": "atualizar_horario_disponivel_horarios__id_horario__put",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_horario",
@@ -694,6 +721,7 @@
       "delete": {
         "summary": "Deletar Horario Disponivel",
         "operationId": "deletar_horario_disponivel_horarios__id_horario__delete",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_horario",
@@ -722,10 +750,48 @@
         }
       }
     },
+    "/medicos/{id_medico}/horarios": {
+      "get": {
+        "summary": "Listar Horarios Medico",
+        "operationId": "listar_horarios_medico_medicos__id_medico__horarios_get",
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
+        "parameters": [
+          {
+            "name": "id_medico",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Id Medico" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/HorarioDisponivel" },
+                  "title": "Response Listar Horarios Medico Medicos  Id Medico  Horarios Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admins/": {
       "post": {
         "summary": "Criar Admin",
         "operationId": "criar_admin_admins__post",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -756,6 +822,7 @@
       "get": {
         "summary": "Listar Admins",
         "operationId": "listar_admins_admins__get",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "skip",
@@ -798,6 +865,7 @@
       "get": {
         "summary": "Ler Admin",
         "operationId": "ler_admin_admins__id_admin__get",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_admin",
@@ -828,6 +896,7 @@
       "put": {
         "summary": "Atualizar Admin",
         "operationId": "atualizar_admin_admins__id_admin__put",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_admin",
@@ -866,6 +935,7 @@
       "delete": {
         "summary": "Deletar Admin",
         "operationId": "deletar_admin_admins__id_admin__delete",
+        "security": [{ "OAuth2PasswordBearer": ["Admin"] }],
         "parameters": [
           {
             "name": "id_admin",
@@ -898,6 +968,9 @@
       "get": {
         "summary": "Listar Horarios Disponiveis Medico",
         "operationId": "listar_horarios_disponiveis_medico_medicos__id_medico__horarios_disponiveis_get",
+        "security": [
+          { "OAuth2PasswordBearer": ["Paciente", "Medico", "Admin"] }
+        ],
         "parameters": [
           {
             "name": "id_medico",
@@ -934,7 +1007,7 @@
       "post": {
         "summary": "Agendar Consulta",
         "operationId": "agendar_consulta_consultas__id_medico__agendar_post",
-        "security": [{ "OAuth2PasswordBearer": [] }],
+        "security": [{ "OAuth2PasswordBearer": ["Paciente", "Admin"] }],
         "parameters": [
           {
             "name": "id_medico",
@@ -1008,7 +1081,7 @@
       "get": {
         "summary": "Listar Consultas Paciente",
         "operationId": "listar_consultas_paciente_pacientes__id_paciente__consultas_get",
-        "security": [{ "OAuth2PasswordBearer": [] }],
+        "security": [{ "OAuth2PasswordBearer": ["Paciente", "Admin"] }],
         "parameters": [
           {
             "name": "id_paciente",
@@ -1045,7 +1118,7 @@
       "get": {
         "summary": "Listar Consultas Medico",
         "operationId": "listar_consultas_medico_medicos__id_medico__consultas_get",
-        "security": [{ "OAuth2PasswordBearer": [] }],
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_medico",
@@ -1115,7 +1188,7 @@
       "put": {
         "summary": "Iniciar Consulta",
         "operationId": "iniciar_consulta_consultas__id_consulta__iniciar_put",
-        "security": [{ "OAuth2PasswordBearer": [] }],
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_consulta",
@@ -1148,7 +1221,7 @@
       "put": {
         "summary": "Finalizar Consulta",
         "operationId": "finalizar_consulta_consultas__id_consulta__finalizar_put",
-        "security": [{ "OAuth2PasswordBearer": [] }],
+        "security": [{ "OAuth2PasswordBearer": ["Medico", "Admin"] }],
         "parameters": [
           {
             "name": "id_consulta",

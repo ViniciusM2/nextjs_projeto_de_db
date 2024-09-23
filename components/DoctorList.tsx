@@ -15,9 +15,10 @@ interface DoctorListProps {
   onEdit: (medico: Medico) => void
   onDelete: (id: number) => void
   onViewAppointments: (id: number) => void
+  userRole: string
 }
 
-export default function DoctorList({ medicos = [], onEdit, onDelete, onViewAppointments }: DoctorListProps) {
+export default function DoctorList({ medicos = [], onEdit, onDelete, onViewAppointments, userRole }: DoctorListProps) {
   if (!medicos || medicos.length === 0) {
     return <p>Nenhum médico encontrado.</p>
   }
@@ -39,17 +40,19 @@ export default function DoctorList({ medicos = [], onEdit, onDelete, onViewAppoi
             <TableCell>{medico.especialidade}</TableCell>
             <TableCell>{medico.crm}</TableCell>
             <TableCell>
-              <div className="space-x-2">
-                <Button onClick={() => onEdit(medico)} variant="outline" size="sm">
-                  Editar
-                </Button>
-                <Button onClick={() => onDelete(medico.id_medico)} variant="destructive" size="sm">
-                  Excluir
-                </Button>
-                <Button onClick={() => onViewAppointments(medico.id_medico)} variant="secondary" size="sm">
-                  Ver Consultas
-                </Button>
-              </div>
+              {userRole === "Admin" && (
+                <div className="space-x-2 space-y-2">
+                  <Button onClick={() => onEdit(medico)} variant="outline" size="sm">
+                    Editar
+                  </Button>
+                  <Button onClick={() => onDelete(medico.id_medico)} variant="destructive" size="sm">
+                    Excluir
+                  </Button>
+                  <Button onClick={() => onViewAppointments(medico.id_medico)} variant="secondary" size="sm">
+                    Ver Consultas
+                  </Button>
+                </div>
+              )}
             </TableCell>
           </TableRow>
         ))}
