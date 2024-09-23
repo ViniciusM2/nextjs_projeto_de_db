@@ -75,7 +75,7 @@ export default function BookAppointment() {
   const fetchPatients = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://147.182.166.181:8000/pacientes/", {
+      const response = await fetch("http://147.182.166.181/pacientes/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -99,7 +99,7 @@ export default function BookAppointment() {
   const fetchMedicos = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://147.182.166.181:8000/medicos/", {
+      const response = await fetch("http://147.182.166.181/medicos/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -127,7 +127,7 @@ export default function BookAppointment() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://147.182.166.181:8000/medicos/${selectedDoctor}/horarios_disponiveis`,
+        `http://147.182.166.181/medicos/${selectedDoctor}/horarios_disponiveis`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -165,7 +165,7 @@ export default function BookAppointment() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://147.182.166.181:8000/consultas/${selectedDoctor}/agendar`,
+        `http://147.182.166.181/consultas/${selectedDoctor}/agendar`,
         {
           method: "POST",
           headers: {

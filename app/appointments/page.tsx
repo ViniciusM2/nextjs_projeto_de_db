@@ -23,7 +23,7 @@ export default function Appointments() {
   }, [isLoggedIn, router]);
 
   const getUrlByRole = () => {
-    return `http://147.182.166.181:8000/consultas`;
+    return `http://147.182.166.181/consultas`;
   };
 
   const fetchAppointments = async () => {

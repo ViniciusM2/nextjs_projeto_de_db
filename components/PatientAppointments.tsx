@@ -29,7 +29,7 @@ const PatientAppointments: React.FC<PatientAppointmentsProps> = ({ patientId, on
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://147.182.166.181:8000/pacientes/${patientId}/consultas`, {
+      const response = await fetch(`http://147.182.166.181/pacientes/${patientId}/consultas`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

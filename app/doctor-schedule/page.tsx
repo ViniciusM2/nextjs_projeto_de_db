@@ -31,7 +31,7 @@ export default function DoctorSchedulePage() {
   const fetchDoctorSchedules = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://147.182.166.181:8000/horarios`, {
+      const response = await fetch(`http://147.182.166.181/horarios`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -68,7 +68,7 @@ export default function DoctorSchedulePage() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://147.182.166.181:8000/horarios/", {
+      const response = await fetch("http://147.182.166.181/horarios/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

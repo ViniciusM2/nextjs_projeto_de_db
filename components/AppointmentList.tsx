@@ -17,7 +17,7 @@ export function AppointmentList({
     setLoading(id);
     try {
       const response = await fetch(
-        `http://147.182.166.181:8000/consultas/${id}/cancelar`,
+        `http://147.182.166.181/consultas/${id}/cancelar`,
         {
           method: "PUT",
           headers: {

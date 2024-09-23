@@ -48,7 +48,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://147.182.166.181:8000/token", {
+      const response = await fetch("http://147.182.166.181/token", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

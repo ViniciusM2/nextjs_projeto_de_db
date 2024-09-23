@@ -41,7 +41,7 @@ export default function Patients() {
   const fetchPatients = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://147.182.166.181:8000/pacientes/', {
+      const response = await fetch('http://147.182.166.181/pacientes/', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -65,7 +65,7 @@ export default function Patients() {
   const handleAddPatient = async (patientData: Omit<Patient, 'id_paciente'>) => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://147.182.166.181:8000/pacientes/', {
+      const response = await fetch('http://147.182.166.181/pacientes/', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ export default function Patients() {
   const handleUpdatePatient = async (id: number, patientData: Omit<Patient, 'id_paciente'>) => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://147.182.166.181:8000/pacientes/${id}`, {
+      const response = await fetch(`http://147.182.166.181/pacientes/${id}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ export default function Patients() {
   const handleDeletePatient = async (id: number) => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://147.182.166.181:8000/pacientes/${id}`, {
+      const response = await fetch(`http://147.182.166.181/pacientes/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
