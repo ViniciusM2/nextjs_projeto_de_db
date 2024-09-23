@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/popover";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface Medico {
   id_medico: number;
@@ -47,19 +49,17 @@ export default function BookAppointment() {
   const { toast } = useToast();
   const [doctors, setMedicos] = useState<Medico[]>([]);
   const [selectedDoctor, setSelectedDoctor] = useState<number | null>(null);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [availableSlots, setAvailableSlots] = useState<
-    { horario_inicial: string }[]
+    {
+      data_disponivel: string;
+      horario_inicial: string;
+    }[]
   >([]);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [patients, setPatients] = useState<Patient[]>([]); // Ensure this is initialized as an empty array
   const [selectedPatient, setSelectedPatient] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log(userId);
-    console.log(userRole);
-    console.log(userEmail);
-
     if (!isLoggedIn) {
       router.push("/login");
     } else {
@@ -121,8 +121,7 @@ export default function BookAppointment() {
   };
 
   const fetchAvailableSlots = async () => {
-    console.log(selectedDoctor, selectedDate);
-    if (!selectedDoctor || !selectedDate) return;
+    if (!selectedDoctor) return;
 
     try {
       const token = localStorage.getItem("token");
@@ -135,9 +134,12 @@ export default function BookAppointment() {
         }
       );
       if (!response.ok) throw new Error("Failed to fetch slots"); // Handle non-200 responses
-      const data = await response.json() as { horario_inicial: string, data_disponivel: string }[];
-      const filteredData = data.filter(slot => slot.data_disponivel === format(selectedDate, "yyyy-MM-dd"));
-      setAvailableSlots(filteredData);
+      const data = (await response.json()) as {
+        horario_inicial: string;
+        data_disponivel: string;
+      }[];
+
+      setAvailableSlots(data);
     } catch (error) {
       console.error("Error fetching available slots:", error);
       toast({
@@ -150,10 +152,10 @@ export default function BookAppointment() {
 
   useEffect(() => {
     fetchAvailableSlots();
-  }, [selectedDoctor, selectedDate]);
+  }, [selectedDoctor]);
 
   const handleBookAppointment = async () => {
-    if (!selectedDoctor || !selectedDate || !selectedSlot) {
+    if (!selectedDoctor || !selectedSlot) {
       toast({
         title: "Error",
         description: "Please select a doctor, date, and time slot.",
@@ -163,6 +165,12 @@ export default function BookAppointment() {
     }
 
     try {
+      console.log(selectedSlot);
+      // 13:30:00-2024-09-12
+      let splitSlot = selectedSlot.split("-")
+      let date = splitSlot[1] + '-' + splitSlot[2] + '-' + splitSlot[3]
+      let time = splitSlot[0]
+      console.log(date)
       const token = localStorage.getItem("token");
       const response = await fetch(
         `http://147.182.166.181/consultas/${selectedDoctor}/agendar`,
@@ -175,8 +183,8 @@ export default function BookAppointment() {
           body: JSON.stringify({
             id_paciente: selectedPatient,
             id_medico: selectedDoctor,
-            data_consulta: format(selectedDate, "yyyy-MM-dd"),
-            horario_consulta: selectedSlot,
+            data_consulta: date,
+            horario_consulta: time,
           }),
         }
       );
@@ -225,7 +233,11 @@ export default function BookAppointment() {
               </SelectContent>
             </Select>
           )}
-          <Select onValueChange={(value) => setSelectedDoctor(Number(value))}>
+          <Select
+            onValueChange={(value) => {
+              setSelectedDoctor(Number(value));
+            }}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select a doctor" />
             </SelectTrigger>
@@ -242,53 +254,37 @@ export default function BookAppointment() {
           </Select>
 
           <div className="flex space-x-4">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-[280px] justify-start text-left font-normal",
-                    !selectedDate && "text-muted-foreground"
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {selectedDate ? (
-                    format(selectedDate, "PPP")
-                  ) : (
-                    <span>Pick a date</span>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0">
-                <Calendar
-                  mode="single"
-                  selected={selectedDate || new Date()}
-                  onSelect={(date) => setSelectedDate(date || null)}
-                  initialFocus
-                  disabled={(date) => {
-                    const currentDate = new Date();
-                    return date < currentDate
-                  }}
-                />
-              </PopoverContent>
-            </Popover>
-
             {availableSlots.length > 0 && (
-              <Select onValueChange={setSelectedSlot}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a time slot" />
-                </SelectTrigger>
-                <SelectContent>
-                  {availableSlots.map((slot) => (
-                    <SelectItem
-                      key={slot.horario_inicial}
-                      value={slot.horario_inicial}
+              <RadioGroup
+                value={selectedSlot ?? undefined}
+                onValueChange={setSelectedSlot}
+                className="flex flex-col space-y-2"
+              >
+                {availableSlots.map((slot) => (
+                  <div
+                    key={`${slot.horario_inicial}-${slot.data_disponivel}`}
+                    className="flex items-center space-x-2"
+                  >
+                    <RadioGroupItem
+                      value={`${slot.horario_inicial}-${slot.data_disponivel}`}
                     >
-                      {slot.horario_inicial}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                      <RadioGroupItem
+                        value={`${slot.horario_inicial}-${slot.data_disponivel}`}
+                      />
+                    </RadioGroupItem>
+                    <Label
+                      htmlFor={`${slot.horario_inicial}-${slot.data_disponivel}`}
+                    >
+                      {format(
+                        new Date(
+                          `${slot.data_disponivel}T${slot.horario_inicial}`
+                        ),
+                        "PPpp"
+                      )}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
             )}
           </div>
 

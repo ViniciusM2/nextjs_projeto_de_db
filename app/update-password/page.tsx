@@ -18,7 +18,6 @@ export default function UpdatePasswordPage() {
       return
     }
     // Here you would typically send a request to your backend to update the password
-    console.log('Password update attempt:', { currentPassword, newPassword })
     // Implement actual password update logic here
   }
 

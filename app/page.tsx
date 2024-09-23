@@ -7,7 +7,6 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Home() {
   const { isLoggedIn, userRole } = useAuth();
-  console.log(userRole);
 
   if (isLoggedIn) {
     return (
